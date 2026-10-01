@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portofolio pribadi Muhammad Naufal" />
+  <title>Muhammad Naufal — Personal Portfolio</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+
+    :root {
+      --ink: #101828;
+      --muted: #667085;
+      --line: #e4e7ec;
+      --surface: rgba(255,255,255,.82);
+      --white: #ffffff;
+      --navy: #0b1736;
+      --blue: #2563eb;
+      --cyan: #06b6d4;
+      --soft-blue: #eff6ff;
+      --bg: #f7f9fc;
+      --shadow: 0 18px 55px rgba(16, 24, 40, .09);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 10%, rgba(37,99,235,.10), transparent 26%),
+        radial-gradient(circle at 92% 18%, rgba(6,182,212,.09), transparent 24%),
+        var(--bg);
+      font-family: "Inter", system-ui, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: inherit; }
+
+    /* NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 14px;
+      z-index: 100;
+      width: min(1180px, calc(100% - 32px));
+      margin: 14px auto 0;
+      padding: 13px 18px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      background: rgba(11,23,54,.93);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 18px;
+      box-shadow: 0 14px 40px rgba(11,23,54,.20);
+      backdrop-filter: blur(16px);
+    }
+
+    .logo {
+      color: #fff;
+      font-family: "Manrope", sans-serif;
+      font-weight: 700;
+      letter-spacing: -.4px;
+      white-space: nowrap;
+    }
+
+    .logo span { color: #60a5fa; }
+
+    .links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: rgba(255,255,255,.72);
+      padding: 8px 11px;
+      border-radius: 10px;
+      font-size: .88rem;
+      font-weight: 600;
+      transition: .25s ease;
+    }
+
+    .navbar .links a:hover {
+      color: #fff;
+      background: rgba(255,255,255,.09);
+    }
+
+    .lang-switch {
+      color: rgba(255,255,255,.45);
+      font-size: .82rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .lang-switch span { cursor: pointer; }
+    .lang-switch .active { color: #fff; }
+
+    /* MAIN */
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 28px auto 60px;
+      padding: 0;
+    }
+
+    section {
+      scroll-margin-top: 95px;
+      margin-bottom: 28px;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 470px;
+      display: grid;
+      grid-template-columns: 330px 1fr;
+      align-items: center;
+      gap: 48px;
+      padding: 55px;
+      border-radius: 32px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 90% 15%, rgba(96,165,250,.28), transparent 24%),
+        radial-gradient(circle at 70% 100%, rgba(6,182,212,.18), transparent 28%),
+        linear-gradient(135deg, #08142f 0%, #102452 58%, #12346b 100%);
+      box-shadow: 0 25px 70px rgba(11,23,54,.20);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      right: -85px;
+      bottom: -100px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 50%;
+      box-shadow: 0 0 0 45px rgba(255,255,255,.025), 0 0 0 90px rgba(255,255,255,.018);
+    }
+
+    .hero-img-wrap {
+      position: relative;
+      z-index: 1;
+      width: 270px;
+      height: 270px;
+      margin: auto;
+    }
+
+    .hero-img-wrap::after {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      border: 1px solid rgba(255,255,255,.20);
+      border-radius: 30px;
+      transform: rotate(5deg);
+    }
+
+    .hero-img {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 26px;
+      display: block;
+      background: #dbe3ef;
+      border: 5px solid rgba(255,255,255,.12);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 13px;
+      color: #93c5fd;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: #60a5fa;
+      border-radius: 99px;
+    }
+
+    .hero-info { position: relative; z-index: 2; }
+
+    .hero-info h1 {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(2.7rem, 6vw, 5.2rem);
+      line-height: .98;
+      letter-spacing: -3px;
+    }
+
+    .hero-info h1 span {
+      color: #60a5fa;
+    }
+
+    .hero-info h3 {
+      margin: 17px 0 18px;
+      color: rgba(255,255,255,.80);
+      font-size: 1.08rem;
+      font-weight: 500;
+    }
+
+    .hero-description {
+      max-width: 670px;
+      margin: 0 0 25px;
+      color: rgba(255,255,255,.68);
+      font-size: .98rem;
+    }
+
+    .info-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 25px;
+    }
+
+    .info-pill {
+      padding: 7px 11px;
+      color: rgba(255,255,255,.82);
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 999px;
+      font-size: .78rem;
+    }
+
+    .info-pill strong { color: #fff; margin-right: 4px; }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 11px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: .88rem;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      color: #08142f;
+      background: #fff;
+      box-shadow: 0 10px 25px rgba(0,0,0,.15);
+    }
+
+    .btn-primary:hover { box-shadow: 0 14px 30px rgba(0,0,0,.20); }
+
+    .btn-outline {
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.24);
+      background: rgba(255,255,255,.06);
+    }
+
+    .btn-outline:hover { background: rgba(255,255,255,.12); }
+
+    /* SECTION CARDS */
+    .content-card {
+      padding: 34px;
+      background: var(--surface);
+      border: 1px solid rgba(16,24,40,.06);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 27px;
+    }
+
+    .section-heading .label {
+      color: var(--blue);
+      font-size: .73rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 3px 0 0;
+      font-family: "Manrope", sans-serif;
+      font-size: 2rem;
+      letter-spacing: -1.2px;
+      color: var(--navy);
+    }
+
+    .section-number {
+      color: #98a2b3;
+      font-family: "Manrope", sans-serif;
+      font-size: .85rem;
+      font-weight: 700;
+    }
+
+    /* EDUCATION / EXPERIENCE */
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 14px;
+      bottom: 14px;
+      width: 2px;
+      background: #dbeafe;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 34px;
+    }
+
+    .education-item {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .institution-logo {
+      width: 92px;
+      height: 92px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      background: #fff;
+      border: 1px solid #e4e7ec;
+      border-radius: 18px;
+      box-shadow: 0 8px 22px rgba(16, 24, 40, .07);
+      overflow: hidden;
+    }
+
+    .institution-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .institution-logo .logo-placeholder {
+      color: #98a2b3;
+      font-size: .65rem;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.25;
+      letter-spacing: .5px;
+    }
+
+    .organization-item {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .organization-logo {
+      width: 72px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #e4e7ec;
+      border-radius: 16px;
+      box-shadow: 0 8px 22px rgba(16, 24, 40, .07);
+      overflow: hidden;
+    }
+
+    .organization-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .organization-logo .logo-placeholder {
+      color: #98a2b3;
+      font-size: .58rem;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.2;
+      letter-spacing: .35px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 9px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #fff;
+      border: 4px solid var(--blue);
+      box-shadow: 0 0 0 5px #eff6ff;
+    }
+
+    .item-card {
+      padding: 20px 22px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: #fff;
+      transition: .25s ease;
+    }
+
+    .item-card:hover {
+      transform: translateX(4px);
+      border-color: #bfdbfe;
+      box-shadow: 0 10px 28px rgba(37,99,235,.08);
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 5px 9px;
+      color: #175cd3;
+      background: #eff6ff;
+      border-radius: 999px;
+      font-size: .70rem;
+      font-weight: 800;
+      letter-spacing: .4px;
+      margin-bottom: 9px;
+    }
+
+    .item-card h3 {
+      margin: 0 0 3px;
+      font-family: "Manrope", sans-serif;
+      color: var(--navy);
+      font-size: 1.05rem;
+    }
+
+    .item-card h4 {
+      margin: 0 0 7px;
+      color: #344054;
+      font-size: .94rem;
+    }
+
+    .item-card p {
+      margin: 3px 0;
+      color: var(--muted);
+      font-size: .90rem;
+    }
+
+    .subheading {
+      margin: 27px 0 13px;
+      font-size: .95rem;
+      color: var(--navy);
+    }
+
+    /* CERTIFICATION */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .cert-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+
+    .cert-card strong { font-size: .91rem; }
+    .cert-card a {
+      flex: 0 0 auto;
+      color: var(--blue);
+      text-decoration: none;
+      font-size: .80rem;
+      font-weight: 800;
+    }
+
+    .cert-card a:hover { text-decoration: underline; }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .skill-card {
+      padding: 24px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .skill-icon {
+      display: inline-flex;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      color: #175cd3;
+      background: #eff6ff;
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
+
+    .skill-card h3 {
+      margin: 0 0 14px;
+      font-family: "Manrope", sans-serif;
+      color: var(--navy);
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .skill-list li {
+      padding: 7px 10px;
+      color: #475467;
+      background: #f8fafc;
+      border: 1px solid #eaecf0;
+      border-radius: 9px;
+      font-size: .78rem;
+      font-weight: 600;
+    }
+
+    /* LANGUAGE */
+    .language-row {
+      display: grid;
+      grid-template-columns: 150px 1fr 110px;
+      align-items: center;
+      gap: 18px;
+      padding: 17px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .language-row:last-child { border-bottom: 0; }
+    .language-name { font-weight: 800; }
+    .language-level { color: var(--muted); font-size: .85rem; }
+
+    .progress {
+      height: 8px;
+      background: #eef2f6;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress span {
+      display: block;
+      height: 100%;
+      width: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+    }
+
+    .progress.intermediate span { width: 65%; }
+
+    /* FOOTER */
+    footer {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto 35px;
+      padding: 22px;
+      text-align: center;
+      color: #98a2b3;
+      font-size: .82rem;
+    }
+
+    footer strong { color: #667085; }
+
+    /* RESPONSIVE */
+    @media (max-width: 850px) {
+      .navbar { flex-wrap: wrap; }
+      .links { order: 3; width: 100%; overflow-x: auto; justify-content: flex-start; }
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 40px 30px;
+        text-align: center;
+      }
+
+      .education-item {
+        grid-template-columns: 78px 1fr;
+        gap: 16px;
+      }
+
+      .institution-logo {
+        width: 78px;
+        height: 78px;
+      }
+
+      .organization-item {
+        grid-template-columns: 64px 1fr;
+        gap: 15px;
+      }
+
+      .organization-logo {
+        width: 64px;
+        height: 64px;
+      }
+      .hero-img-wrap { width: 210px; height: 210px; }
+      .eyebrow { justify-content: center; }
+      .hero-description { margin-left: auto; margin-right: auto; }
+      .info-grid, .btn-group { justify-content: center; }
+      .cert-grid, .skills-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        top: 8px;
+        width: calc(100% - 18px);
+        margin-top: 8px;
+      }
+      .container, footer { width: calc(100% - 18px); }
+      .hero { border-radius: 24px; padding: 32px 20px; min-height: auto; }
+      .hero-info h1 { letter-spacing: -2px; }
+      .content-card { padding: 24px 18px; border-radius: 20px; }
+      h2 { font-size: 1.65rem; }
+
+      .education-item {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .institution-logo {
+        width: 72px;
+        height: 72px;
+      }
+
+      .organization-item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .organization-logo {
+        width: 64px;
+        height: 64px;
+      }
+      .section-heading { align-items: flex-start; }
+      .language-row { grid-template-columns: 1fr; gap: 7px; }
+      .language-level { order: 3; }
+      .links a { font-size: .78rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logo">Bio<span>.</span>Portofolio</div>
+
+    <div class="links">
+      <a href="#beranda">Beranda</a>
+      <a href="#pendidikan">Pendidikan</a>
+      <a href="#pengalaman">Pengalaman</a>
+      <a href="#sertifikasi">Sertifikasi</a>
+      <a href="#keahlian">Keahlian</a>
+      <a href="#bahasa">Bahasa</a>
+    </div>
+
+    <div class="lang-switch"><span class="active">ID</span> <span>•</span> <span>EN</span></div>
+  </nav>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section id="beranda" class="hero">
+      <div class="hero-img-wrap">
+        <img src="IMG/FOTO NAUFAL.jpeg" alt="Foto profil Muhammad Naufal" class="hero-img" />
+      </div>
+
+      <div class="hero-info">
+        <div class="eyebrow">Personal Portfolio</div>
+        <h1>Muhammad <span>Naufal</span></h1>
+        <h3>Mahasiswa Ekonomi Syariah & Wirausahawan</h3>
+
+        <p class="hero-description">
+          Mahasiswa yang tertarik pada ekonomi, kewirausahaan, riset, dan pengembangan
+          program. Senang mengubah ide menjadi pekerjaan yang terstruktur, berdampak,
+          dan dapat dieksekusi.
+        </p>
+
+        <div class="info-grid">
+          <div class="info-pill"><strong>📍</strong> Depok, Indonesia</div>
+          <div class="info-pill"><strong>🎓</strong> UIN Jakarta</div>
+          <div class="info-pill"><strong>💼</strong> Entrepreneur</div>
+          <div class="info-pill"><strong>📅</strong> 22 Nov 2005</div>
+        </div>
+
+        <div class="btn-group">
+          <a href="#pengalaman" class="btn btn-primary">Lihat Pengalaman →</a>
+          <a href="#sertifikasi" class="btn btn-outline">Lihat CV</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="pendidikan" class="content-card">
+      <div class="section-heading">
+        <div>
+          <div class="label">Education</div>
+          <h2>Pendidikan</h2>
+        </div>
+        <div class="section-number">01 / 06</div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="item-card education-item">
+            <!-- GANTI src DENGAN LOGO KAMPUS ANDA -->
+            <div class="institution-logo">
+              <img src="IMG/LOGO-UIN.png" alt="Logo UIN Syarif Hidayatullah Jakarta" />
+            </div>
+
+            <div>
+              <span class="badge">S1 • 2024 — Sekarang</span>
+              <h3>UIN Syarif Hidayatullah Jakarta</h3>
+              <p><strong>Fakultas:</strong> Ekonomi dan Bisnis</p>
+              <p><strong>Program Studi:</strong> Ekonomi Syariah</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-card education-item">
+            <!-- GANTI src DENGAN LOGO SEKOLAH ANDA -->
+            <div class="institution-logo">
+              <img src="IMG/LOGO-DARUL-KHOLIDIN.png" alt="Logo SMAS Darul Kholidin Bogor" />
+            </div>
+
+            <div>
+              <span class="badge">Lulus • 2024</span>
+              <h3>SMAS Darul Kholidin Bogor</h3>
+              <p><strong>Jurusan:</strong> MIPA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="pengalaman" class="content-card">
+      <div class="section-heading">
+        <div>
+          <div class="label">Experience</div>
+          <h2>Pengalaman & Organisasi</h2>
+        </div>
+        <div class="section-number">02 / 06</div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="item-card">
+            <span class="badge">Wirausaha</span>
+            <h3>Pemilik / Pengelola Rumah Makan</h3>
+            <p><strong>Lokasi:</strong> [Nama/Lokasi Usaha Anda]</p>
+            <p><strong>Jobdesk:</strong> Mengelola operasional harian rumah makan, mengatur tata letak dan pengadaan, serta merancang dokumen formal untuk tata kelola usaha.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-card organization-item">
+            <!-- GANTI src DENGAN LOGO ORGANISASI ANDA -->
+            <div class="organization-logo">
+              <img src="IMG/LOGO-ORGANISASI.png" alt="Logo organisasi" />
+            </div>
+
+            <div>
+              <span class="badge">Aktif</span>
+              <h3>Divisi Pendidikan dan Ilmu Pengetahuan</h3>
+              <p><strong>Organisasi:</strong> [Nama Organisasi Mahasiswa]</p>
+              <p><strong>Jobdesk:</strong> Mengkoordinasikan presentasi akademik dan menyusun timeline detail untuk program rutin secara sistematis.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-card">
+            <span class="badge">Manajemen Program</span>
+            <h3>Koordinator Seminar Kelas Rutin</h3>
+            <p><strong>Durasi:</strong> April 2026 — November 2026</p>
+            <p><strong>Fokus:</strong> Merancang dan mengeksekusi jadwal kalender kelas bi-mingguan dengan pengawasan operasional penuh.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="item-card">
+            <span class="badge">Riset & Akademik</span>
+            <h3>Penyusunan Makalah Penelitian Terapan</h3>
+            <p><strong>Fokus Utama:</strong> Perumusan masalah penelitian, perancangan tinjauan pustaka dengan format standar APA 7th, serta penentuan metrik keberlanjutan.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATION -->
+    <section id="sertifikasi" class="content-card">
+      <div class="section-heading">
+        <div>
+          <div class="label">Credentials</div>
+          <h2>Sertifikasi & Pelatihan</h2>
+        </div>
+        <div class="section-number">03 / 06</div>
+      </div>
+
+      <div class="cert-grid">
+        <div class="cert-card">
+          <strong>Workshop Penulisan Akademik</strong>
+          <a href="#" target="_blank" rel="noopener">Sertifikat ↗</a>
+        </div>
+        <div class="cert-card">
+          <strong>Pelatihan Manajemen Data Excel</strong>
+          <a href="#" target="_blank" rel="noopener">Sertifikat ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="keahlian" class="content-card">
+      <div class="section-heading">
+        <div>
+          <div class="label">Capabilities</div>
+          <h2>Keahlian</h2>
+        </div>
+        <div class="section-number">04 / 06</div>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-icon">⚡</div>
+          <h3>Hard Skill</h3>
+          <ul class="skill-list">
+            <li>3D Modeling</li>
+            <li>Workspace Design</li>
+            <li>Excel</li>
+            <li>Google Sheets</li>
+            <li>APA 7th</li>
+            <li>Manajemen F&B</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon">✦</div>
+          <h3>Soft Skill</h3>
+          <ul class="skill-list">
+            <li>Time Management</li>
+            <li>Project Management</li>
+            <li>Critical Thinking</li>
+            <li>Research Analysis</li>
+            <li>Scheduling</li>
+            <li>Administrasi</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- LANGUAGE -->
+    <section id="bahasa" class="content-card">
+      <div class="section-heading">
+        <div>
+          <div class="label">Communication</div>
+          <h2>Bahasa</h2>
+        </div>
+        <div class="section-number">05 / 06</div>
+      </div>
+
+      <div class="language-row">
+        <div class="language-name">Bahasa Indonesia</div>
+        <div class="progress"><span></span></div>
+        <div class="language-level">Native</div>
+      </div>
+
+      <div class="language-row">
+        <div class="language-name">Bahasa Inggris</div>
+        <div class="progress intermediate"><span></span></div>
+        <div class="language-level">Intermediate</div>
+      </div>
+
+      <div class="language-row">
+        <div class="language-name">Bahasa Arab</div>
+        <div class="progress intermediate"><span></span></div>
+        <div class="language-level">Intermediate</div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 <strong>Muhammad Naufal</strong> · Personal Portfolio
+  </footer>
+</body>
+</html>
